@@ -5,7 +5,6 @@ from core.log import Logging
 class ElasticIpAnalyzer(Logging):
     def __init__(self):
         self.ec2 = boto3.client('ec2')
-        self.log = Logging()
 
     def find_elastic_dissociated(self):
         elasticips = self.ec2.describe_addresses()
@@ -15,4 +14,4 @@ class ElasticIpAnalyzer(Logging):
             public_ip = ip['PublicIp']
 
             if 'InstanceId' not in ip:
-                self.log.print_yellow("[+] Elastic IP {0} with public IP {1} is not associated".format(allocation_id, public_ip))
+                self.print_yellow("[+] Elastic IP {0} with public IP {1} is not associated".format(allocation_id, public_ip))

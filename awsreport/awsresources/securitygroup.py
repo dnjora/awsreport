@@ -4,7 +4,6 @@ from core.log import Logging
 class SgAnalyzer(Logging):
     def __init__(self, sg_rule='0.0.0.0/0'):
         self.ec2 = boto3.client('ec2')
-        self.log = Logging()
         self.sg_rule = sg_rule
 
     def find_security_group_by_rule(self):
@@ -19,4 +18,4 @@ class SgAnalyzer(Logging):
 
                 for ip in permission['IpRanges']:
                     if ip['CidrIp'] == self.sg_rule:
-                        self.log.print_yellow("[+] Security group {0} with inbound rule {1} to port {2}".format(sg_groupid, self.sg_rule, to_port))
+                        self.print_yellow("[+] Security group {0} with inbound rule {1} to port {2}".format(sg_groupid, self.sg_rule, to_port))

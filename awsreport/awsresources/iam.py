@@ -7,7 +7,6 @@ class IamAnalyzer():
     def __init__(self, iam_key_age=90):
         self.iam_client = boto3.client('iam')
         self.iam_key_age = iam_key_age
-        self.log = Logging()
         self.users = list()
 
     def find_users(self):
@@ -25,5 +24,5 @@ class IamAnalyzer():
             verify_date = str(current_date - create_date).split(' ')[0]
 
             if int(verify_date) > int(self.iam_key_age):
-                self.log.print_yellow("[+] IAM user {0} created more than {1} days ago"\
+                self.print_yellow("[+] IAM user {0} created more than {1} days ago"\
                         .format(user, verify_date))
