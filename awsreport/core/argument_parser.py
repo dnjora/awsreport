@@ -33,6 +33,10 @@ class CliArgumentParser():
                             action="store_true",
                             required=False)
 
+        parser.add_argument('--s3',
+                            action="store_true",
+                            required=False)
+
         args = parser.parse_args()
 
         return args

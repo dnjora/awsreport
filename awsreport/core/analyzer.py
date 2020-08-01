@@ -3,6 +3,7 @@ from awsresources.securitygroup import SgAnalyzer
 from awsresources.elasticip import ElasticIpAnalyzer
 from awsresources.iam import IamAnalyzer
 from awsresources.igw import IgwAnalyzer
+from awsresources.s3 import S3Analyzer
 
 from core.argument_parser import CliArgumentParser
 from core.log import Logging
@@ -30,6 +31,8 @@ class Analyzer(Logging):
 
             return IamAnalyzer().find_max_access_key_age()
 
-
         if args.igw:
             return IgwAnalyzer().find_igw_detached()
+
+        if args.s3:
+            return S3Analyzer().find_buckets_public()
