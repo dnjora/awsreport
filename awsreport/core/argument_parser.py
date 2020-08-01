@@ -29,6 +29,10 @@ class CliArgumentParser():
         parser.add_argument('--iam-max-age',
                             required=False)
 
+        parser.add_argument('--igw',
+                            action="store_true",
+                            required=False)
+
         args = parser.parse_args()
 
         return args

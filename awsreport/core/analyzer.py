@@ -2,6 +2,7 @@ from awsresources.ami import AmiAnalyzer
 from awsresources.securitygroup import SgAnalyzer
 from awsresources.elasticip import ElasticIpAnalyzer
 from awsresources.iam import IamAnalyzer
+from awsresources.igw import IgwAnalyzer
 
 from core.argument_parser import CliArgumentParser
 from core.log import Logging
@@ -26,3 +27,6 @@ class Analyzer(Logging):
         if args.iam:
             if args.iam_max_age:
                 return IamAnalyzer(args.iam_max_age).find_max_access_key_age()
+
+        if args.igw:
+            return IgwAnalyzer().find_igw_detached()
