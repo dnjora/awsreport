@@ -1,12 +1,12 @@
-from core.ami import AmiAnalyzer
 from core.argument_parser import CliArgumentParser
+from core.analyzer import Analyzer
 
 def main():
     parser = CliArgumentParser()
     args = parser.argument_parser()
+    analyzer = Analyzer()
 
-    if args.ami:
-        ami = AmiAnalyzer().find_public_ami(owners=[args.owner])
+    analyzer.aws_scan(args)
 
 if __name__=='__main__':
     main()
