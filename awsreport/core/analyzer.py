@@ -28,5 +28,8 @@ class Analyzer(Logging):
             if args.iam_max_age:
                 return IamAnalyzer(args.iam_max_age).find_max_access_key_age()
 
+            return IamAnalyzer().find_max_access_key_age()
+
+
         if args.igw:
             return IgwAnalyzer().find_igw_detached()
