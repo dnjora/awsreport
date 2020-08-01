@@ -1,8 +1,10 @@
 import argparse
 
+from core.help_msg import help_msg
+
 class CliArgumentParser():
     def argument_parser(self):
-        parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser(add_help=False, usage=help_msg)
 
         parser.add_argument('--ami', '--images',
                             action="store_true",
