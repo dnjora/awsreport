@@ -37,6 +37,10 @@ class CliArgumentParser():
                             action="store_true",
                             required=False)
 
+        parser.add_argument('--volumes',
+                            action="store_true",
+                            required=False)
+
         args = parser.parse_args()
 
         return args

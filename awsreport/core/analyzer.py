@@ -4,6 +4,7 @@ from awsresources.elasticip import ElasticIpAnalyzer
 from awsresources.iam import IamAnalyzer
 from awsresources.igw import IgwAnalyzer
 from awsresources.s3 import S3Analyzer
+from awsresources.volumes import VolumesAnalyzer
 
 from core.argument_parser import CliArgumentParser
 from core.log import Logging
@@ -36,3 +37,6 @@ class Analyzer(Logging):
 
         if args.s3:
             return S3Analyzer().find_buckets_public()
+
+        if args.volumes:
+            return VolumesAnalyzer().find_volumes_available()
