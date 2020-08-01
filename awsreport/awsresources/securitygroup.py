@@ -7,9 +7,6 @@ class SgAnalyzer(Logging):
         self.log = Logging()
         self.sg_rule = sg_rule
 
-    def __setitem__(self):
-        self.sg_rule = rule
-
     def find_security_group_by_rule(self):
         security_groups = self.ec2.describe_security_groups()
         for sg in security_groups['SecurityGroups']:
