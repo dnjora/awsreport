@@ -26,7 +26,7 @@ class CliArgumentParser():
                             action="store_true",
                             required=False)
 
-        parser.add_argument('--iam_max_age',
+        parser.add_argument('--iam-max-age',
                             required=False)
 
         args = parser.parse_args()

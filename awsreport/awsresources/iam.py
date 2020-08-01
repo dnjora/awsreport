@@ -4,8 +4,9 @@ from core.log import Logging
 from datetime import datetime, timezone
 
 class IamAnalyzer():
-    def __init__(self):
+    def __init__(self, iam_key_age):
         self.iam_client = boto3.client('iam')
+        self.iam_key_age = iam_key_age
         self.log = Logging()
         self.users = list()
 
@@ -14,7 +15,7 @@ class IamAnalyzer():
         for user in response['Users']:
             self.users.append(user['UserName'])
 
-    def find_max_access_key_age(self, iam_key_age):
+    def find_max_access_key_age(self):
         self.find_users()
 
         for user in self.users:
@@ -23,6 +24,6 @@ class IamAnalyzer():
             current_date = datetime.now(timezone.utc).replace(microsecond=0)
             verify_date = str(current_date - create_date).split(' ')[0]
 
-            if int(verify_date) > iam_key_age:
+            if int(verify_date) > int(self.iam_key_age):
                 self.log.print_yellow("[+] IAM user {0} created more than {1} days ago"\
                         .format(user, verify_date))
