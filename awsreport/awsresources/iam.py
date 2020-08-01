@@ -3,7 +3,7 @@ import boto3
 from core.log import Logging
 from datetime import datetime, timezone
 
-class IamAnalyzer():
+class IamAnalyzer(Logging):
     def __init__(self, iam_key_age=90):
         self.iam_client = boto3.client('iam')
         self.iam_key_age = iam_key_age
