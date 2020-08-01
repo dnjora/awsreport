@@ -18,5 +18,5 @@ Examples:
     python awsreport.py --iam --owner 296192063842
     python awsreport.py --iam --iam-max-age 60
     python awsreport.py --sg --cidr 192.168.1.0/24 or
-    python awsreport.py --sg (cidr default is 0.0.0.0)\n
+    python awsreport.py --sg (cidr default is 0.0.0.0)
 '''
