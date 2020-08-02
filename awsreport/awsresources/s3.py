@@ -1,9 +1,9 @@
 import boto3
 
 from collections import defaultdict
-from modules.colors import bcolors
+from core.log import Logging
 
-class S3Analyzer():
+class S3Analyzer(Logging):
     def __init__(self):
         self.s3_resource = boto3.resource('s3')
         self.s3_client = boto3.client('s3')
@@ -13,7 +13,7 @@ class S3Analyzer():
             "http://acs.amazonaws.com/groups/global/AuthenticatedUsers": "Authenticated AWS users"
         }
 
-    def bucket_analyzer(self):
+    def find_buckets_public(self):
         buckets = self.s3_resource.buckets.all()
 
         for bucket in buckets:
@@ -21,7 +21,7 @@ class S3Analyzer():
             public, grants = self.verify_acl(acl)
 
             if public:
-                print("{0}[WARNING]{1} Bucket {2} is public!".format(bcolors.FAIL, bcolors.ENDC, bucket.name))
+                self.print_yellow("[+] Bucket {0} is public!".format(bucket.name))
 
     def verify_acl(self, acl):
         dangerous = defaultdict(list)

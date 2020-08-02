@@ -1,8 +1,8 @@
 import boto3
 
-from modules.colors import bcolors
+from core.log import Logging
 
-class VolumesAnalyzer():
+class VolumesAnalyzer(Logging):
     def __init__(self):
         self.ec2 = boto3.client('ec2')
 
@@ -11,4 +11,4 @@ class VolumesAnalyzer():
         for volume in volumes['Volumes']:
             volume_id = volume['VolumeId']
             if not volume['Attachments']:
-                print("{0}[INFO]{1} EBS Volume {2} available".format(bcolors.WARNING, bcolors.ENDC, volume_id))
+                self.print_yellow("[+] EBS Volume {0} available".format(volume_id))

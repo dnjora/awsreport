@@ -1,5 +1,10 @@
-class Banner:
-    banner = '''
+from core.log import Logging
+
+class Banner(Logging):
+    def display_banner(self):
+        self.print_green(
+'''
+
  █████╗ ██╗    ██╗███████╗    ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗
 ██╔══██╗██║    ██║██╔════╝    ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝
 ███████║██║ █╗ ██║███████╗    ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║
@@ -7,5 +12,8 @@ class Banner:
 ██║  ██║╚███╔███╔╝███████║    ██║  ██║███████╗██║     ╚██████╔╝██║  ██║   ██║
 ╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝
 
-                            Development by Gabriel Dutra
-'''
+AWS Report is a tool for analyzing amazon resources.
+
+''')
+
+        print("-" * 79)

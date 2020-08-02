@@ -1,12 +1,12 @@
 import boto3
-from modules.colors import bcolors
+from core.log import Logging
 
-class SgAnalyzer():
-    def __init__(self):
+class SgAnalyzer(Logging):
+    def __init__(self, sg_rule='0.0.0.0/0'):
         self.ec2 = boto3.client('ec2')
-        self.full_access = "0.0.0.0/0"
+        self.sg_rule = sg_rule
 
-    def find_security_groups(self):
+    def find_security_group_by_rule(self):
         security_groups = self.ec2.describe_security_groups()
         for sg in security_groups['SecurityGroups']:
             sg_groupid = sg['GroupId']
@@ -17,5 +17,5 @@ class SgAnalyzer():
                     to_port = permission['ToPort']
 
                 for ip in permission['IpRanges']:
-                    if ip['CidrIp'] == self.full_access:
-                        print("{0}[WARNING]{1} Security group {2} with inbound rule 0.0.0.0/0 to port {3}".format(bcolors.FAIL, bcolors.ENDC, sg_groupid, to_port))
+                    if ip['CidrIp'] == self.sg_rule:
+                        self.print_yellow("[+] Security group {0} with inbound rule {1} to port {2}".format(sg_groupid, self.sg_rule, to_port))

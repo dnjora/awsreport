@@ -1,12 +1,12 @@
 import boto3
 
-from modules.config import CONFIG
-from modules.colors import bcolors
+from core.log import Logging
 from datetime import datetime, timezone
 
-class IamAnalyzer():
-    def __init__(self):
+class IamAnalyzer(Logging):
+    def __init__(self, iam_key_age=90):
         self.iam_client = boto3.client('iam')
+        self.iam_key_age = iam_key_age
         self.users = list()
 
     def find_users(self):
@@ -23,6 +23,6 @@ class IamAnalyzer():
             current_date = datetime.now(timezone.utc).replace(microsecond=0)
             verify_date = str(current_date - create_date).split(' ')[0]
 
-            if int(verify_date) > CONFIG.iam_max_access_key_age:
-                print("{0}[WARNING]{1} User {2} created more than {3} days ago"\
-                        .format(bcolors.FAIL, bcolors.ENDC, user, verify_date))
+            if int(verify_date) > int(self.iam_key_age):
+                self.print_yellow("[+] IAM user {0} created more than {1} days ago"\
+                        .format(user, verify_date))

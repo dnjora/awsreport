@@ -1,8 +1,8 @@
 import boto3
 
-from modules.colors import bcolors
+from core.log import Logging
 
-class IgwAnalyzer():
+class IgwAnalyzer(Logging):
     def __init__(self):
         self.ec2 = boto3.client('ec2')
 
@@ -12,4 +12,4 @@ class IgwAnalyzer():
         for igw in igws['InternetGateways']:
             igw_id = igw['InternetGatewayId']
             if not igw['Attachments']:
-                print("{0}[INFO]{1} Internet Gateway {2} it is detached".format(bcolors.WARNING, bcolors.ENDC, igw_id))
+                self.print_yellow("[+] Internet Gateway {0} it is detached".format(igw_id))
