@@ -5,7 +5,7 @@ class Logging():
         init(autoreset=True)
 
     def print_green(self, msg):
-        print(Fore.GREEN + msg)
+        print('\033[1;92m' + msg)
 
     def print_yellow(self, msg):
-        print(Fore.YELLOW + msg)
+        print('\033[1;93m' + msg)
