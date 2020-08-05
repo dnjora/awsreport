@@ -1,6 +1,6 @@
 import boto3
 
-from core.log import Logging
+from awsreport.core.log import Logging
 
 class ElasticIpAnalyzer(Logging):
     def __init__(self):

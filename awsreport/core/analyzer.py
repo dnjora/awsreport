@@ -1,13 +1,13 @@
-from awsresources.ami import AmiAnalyzer
-from awsresources.securitygroup import SgAnalyzer
-from awsresources.elasticip import ElasticIpAnalyzer
-from awsresources.iam import IamAnalyzer
-from awsresources.igw import IgwAnalyzer
-from awsresources.s3 import S3Analyzer
-from awsresources.volumes import VolumesAnalyzer
+from awsreport.awsresources.ami import AmiAnalyzer
+from awsreport.awsresources.securitygroup import SgAnalyzer
+from awsreport.awsresources.elasticip import ElasticIpAnalyzer
+from awsreport.awsresources.iam import IamAnalyzer
+from awsreport.awsresources.igw import IgwAnalyzer
+from awsreport.awsresources.s3 import S3Analyzer
+from awsreport.awsresources.volumes import VolumesAnalyzer
 
-from core.argument_parser import CliArgumentParser
-from core.log import Logging
+from awsreport.core.argument_parser import CliArgumentParser
+from awsreport.core.log import Logging
 
 class Analyzer(Logging):
     def __init__(self):

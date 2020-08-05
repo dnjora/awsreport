@@ -1,5 +1,5 @@
 import boto3
-from core.log import Logging
+from awsreport.core.log import Logging
 
 class SgAnalyzer(Logging):
     def __init__(self, sg_rule='0.0.0.0/0'):

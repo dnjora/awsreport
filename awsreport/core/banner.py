@@ -1,4 +1,4 @@
-from core.log import Logging
+from awsreport.core.log import Logging
 
 class Banner(Logging):
     def display_banner(self):

@@ -1,7 +1,7 @@
 import boto3
 
 from collections import defaultdict
-from core.log import Logging
+from awsreport.core.log import Logging
 
 class S3Analyzer(Logging):
     def __init__(self):

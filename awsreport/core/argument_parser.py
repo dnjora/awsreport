@@ -1,6 +1,6 @@
 import argparse
 
-from core.help_msg import help_msg
+from awsreport.core.help_msg import help_msg
 
 class CliArgumentParser():
     def argument_parser(self):
