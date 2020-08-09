@@ -7,7 +7,7 @@ setup(
     name='awsreport',
     author="Gabriel 'bsd0x' Dutra",
     author_email="gmdutra.bsd@gmail.com",
-    version='2.0.0',
+    version='3.0.0',
     description="AWSReport is a tool for analyzing amazon resources.",
     include_package_data=True,
     long_description=long_description,
