@@ -10,6 +10,3 @@ def main():
 
     banner.display_banner()
     analyzer.aws_scan(args)
-
-if __name__=='__main__':
-    main()
