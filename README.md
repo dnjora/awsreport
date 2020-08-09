@@ -14,6 +14,12 @@
 
 <hr>
 
+### Install using PIP
+
+```
+pip install awsreport
+```
+
 ### Features
 
 * Search IAM users based on creation date
